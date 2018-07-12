@@ -3,7 +3,7 @@
 
 <?php
 	if($db->isUserLoggedIn() === TRUE) {
-		echo "Du bist bereits eingeloggt! :) - <a href='index.php?section=logout' alt='Ausloggen'>(ausloggen)</a>";
+		echo "Du bist bereits eingeloggt! :) - <a href='../index.php?section=logout' alt='Ausloggen'>(ausloggen)</a>";
 	} else {
 		if(isset($_POST['einloggen'])) {
 			$mail = $_POST['email'];
@@ -17,7 +17,7 @@
 		}
 ?>
 
-<form action="index.php?section=login" method="POST">
+<form action="../index.php?section=login" method="POST">
     <table>
         <tr>
             <td>

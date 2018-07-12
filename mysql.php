@@ -9,6 +9,7 @@ class DB {
     function __construct() {
         try {
             self::$_db = new PDO("mysql:host=" . self::$_db_host . ";dbname=" . self::$_db_name,  self::$_db_username , self::$_db_password);
+            self::$_db->exec("SET NAMES utf8");
         } catch(PDOException $e) {
             echo "Datenbankverbindung gescheitert!";
             die();
@@ -162,5 +163,19 @@ class DB {
             return false;
         }
     }
+
+    function getAllSites() {
+        $stmt = self::$_db->prepare("SELECT id, name_file, name_link, title FROM sites");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getSiteByNameLink($name_link) {
+        $stmt = self::$_db->prepare("SELECT id, name_file, name_link, title FROM sites WHERE name_link = :name_link");
+        $stmt->bindParam(":name_link", $name_link);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
 ?>

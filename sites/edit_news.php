@@ -31,7 +31,7 @@ if($db->isUserLoggedIn()) { ?>
             echo "<p>Falscher oder nicht vorhandener Eintrag ausgewählt</p>";
         } else {
             ?>
-            <form action="index.php?section=edit_news" method="POST">
+            <form action="../../index.php?section=edit_news" method="POST">
                 <table border="0">
                     <tr>
                         <td>Autor:</td>
@@ -51,7 +51,7 @@ if($db->isUserLoggedIn()) { ?>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Eintragen" name="eintragen" /> <a href='index.php?section=delete_news&eintrag=<?php echo $entry->Eintrag_ID; ?>'><input type="button" value="Löschen" /></a></td>
+                        <td><input type="submit" value="Eintragen" name="eintragen" /> <a href='../../index.php?section=delete_news&eintrag=<?php echo $entry->Eintrag_ID; ?>'><input type="button" value="Löschen" /></a></td>
                     </tr>
                 </table>
                 <input type="hidden" value="<?php echo $entry->Eintrag_ID; ?>" name="eintrag" />

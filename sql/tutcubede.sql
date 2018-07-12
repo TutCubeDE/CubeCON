@@ -1,5 +1,11 @@
--- Dump vom 08.07.2018
--- Passwort zum User info@tutcube: tutcubede
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Erstellungszeit: 12. Jul 2018 um 23:56
+-- Server-Version: 10.1.21-MariaDB
+-- PHP-Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `eintraege` (
   `eintrag_id` int(11) NOT NULL,
   `datum` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `headline` varchar(150) NOT NULL,
-  `eintrag` text NOT NULL,
+  `headline` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `eintrag` text CHARACTER SET utf8 NOT NULL,
   `autor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -34,7 +40,31 @@ CREATE TABLE `eintraege` (
 
 INSERT INTO `eintraege` (`eintrag_id`, `datum`, `headline`, `eintrag`, `autor`) VALUES
 (1, '2010-10-13 22:00:00', 'Hallo Welt und Welt', '<p>Haha Testnews Hallo Welt Welt Welteeeeeeee</p>', 1),
-(3, '2018-07-08 20:02:28', 'Weitere Videos', '<p>Es geht endlich weiter - die Reihe wird fortgesetzt! Schreibt mir, was ihr sehen wollt. :)</p>', 1);
+(3, '2018-07-09 20:00:00', 'Weitere Videos', '<p>Es geht endlich weiter - die Reihe wird fortgesetzt! Schreibt mir, was ihr sehen wollt. :)</p>', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `sites`
+--
+
+CREATE TABLE `sites` (
+  `id` int(11) NOT NULL,
+  `name_file` varchar(255) NOT NULL,
+  `name_link` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `sites`
+--
+
+INSERT INTO `sites` (`id`, `name_file`, `name_link`, `title`) VALUES
+(1, 'startseite', 'home', 'Home'),
+(2, 'videos', 'videos', 'Videos'),
+(3, 'ueber_mich', 'ueber_mich', 'Über mich'),
+(4, 'impressum', 'impressum', 'Impressum'),
+(5, 'login', 'login', 'Login');
 
 -- --------------------------------------------------------
 
@@ -44,11 +74,11 @@ INSERT INTO `eintraege` (`eintrag_id`, `datum`, `headline`, `eintrag`, `autor`) 
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `passwort` varchar(40) NOT NULL,
-  `vorname` varchar(50) NOT NULL,
-  `nachname` varchar(50) NOT NULL,
-  `session` varchar(26) NOT NULL
+  `email` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `passwort` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `vorname` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `nachname` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `session` varchar(26) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,6 +100,12 @@ ALTER TABLE `eintraege`
   ADD KEY `autor` (`autor`);
 
 --
+-- Indizes für die Tabelle `sites`
+--
+ALTER TABLE `sites`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
@@ -83,7 +119,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT für Tabelle `eintraege`
 --
 ALTER TABLE `eintraege`
-  MODIFY `eintrag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eintrag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT für Tabelle `sites`
+--
+ALTER TABLE `sites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
