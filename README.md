@@ -51,3 +51,20 @@ https://www.youtube.com/watch?v=F-po_Be6qMw&list=PLwpgRE9rVbLRhIPBt7moSqxZeXZqNG
         * https://www.youtube.com/watch?v=kc166G6Q7lQ&list=PLwpgRE9rVbLRhIPBt7moSqxZeXZqNG0iR&index=9
     * Quelltext (Stand nach dem Video):
         * https://github.com/TutCubeDE/CubeCON/tree/af0bc55c5b6806e32ae20283cf8139625502880d
+8. **CMS: CUBECON #8 - Seiten in der Datenbank**
+    * Video:
+        * https://www.youtube.com/watch?v=zVqEYp-NKMQ&list=PLwpgRE9rVbLRhIPBt7moSqxZeXZqNG0iR&index=10
+    * Quelltext (Stand nach dem Video):
+        * https://github.com/TutCubeDE/CubeCON/tree/5b995ee5692d2da23b55eb1695370150eb5c2ef9
+        
+9. **CMS: CUBECON #9 - Menüs in der Datenbank**
+    * Video:
+        * https://www.youtube.com/watch?v=tJPdszI_zZU&list=PLwpgRE9rVbLRhIPBt7moSqxZeXZqNG0iR&index=11
+    * Quelltext (Stand nach dem Video):
+        * https://github.com/TutCubeDE/CubeCON/tree/7da2a87c5624415f76c1cef62e8fd96447bd7eff
+        
+        
+## PHP Grundlagen lernen
+Du hast noch nicht viel Ahnung von PHP und möchtest einige Grundlagen lernen? Ich habe auf udemy.com ein Videokurs zu dem Thema erstellt. Über folgenden Link kannst du ihn dir für nur 9,99€ statt 49,99€ sichern! Das beste daran: Du unterstützt mich damit und hast auch noch selber eine ganze Menge davon. :)
+
+Videokurs: https://www.udemy.com/php-programmierung-fur-anfanger-grundlagen/?couponCode=TUTCUBECUBECON

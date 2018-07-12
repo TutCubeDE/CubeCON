@@ -177,5 +177,15 @@ class DB {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    function getMenuWithSitesByID($id_menu) {
+        $stmt = self::$_db->prepare("SELECT m.id, m.name, s.id, s.name_file, s.name_link, s.title, ms.sequence, 
+                                              ms.title_in_menu, ms.permission FROM menu_sites ms INNER JOIN menu m 
+                                              on ms.id_menu = m.id INNER JOIN sites s ON ms.id_site = s.id 
+                                              WHERE ms.id_menu = :id_menu");
+        $stmt->bindParam(":id_menu", $id_menu);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 12. Jul 2018 um 23:56
+-- Erstellungszeit: 13. Jul 2018 um 01:11
 -- Server-Version: 10.1.21-MariaDB
 -- PHP-Version: 7.1.1
 
@@ -45,6 +45,51 @@ INSERT INTO `eintraege` (`eintrag_id`, `datum`, `headline`, `eintrag`, `autor`) 
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `menu`
+--
+
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `menu`
+--
+
+INSERT INTO `menu` (`id`, `name`) VALUES
+(1, 'Hauptmenü');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `menu_sites`
+--
+
+CREATE TABLE `menu_sites` (
+  `id_menu` int(11) NOT NULL,
+  `id_site` int(11) NOT NULL,
+  `sequence` int(2) NOT NULL,
+  `title_in_menu` varchar(255) NOT NULL,
+  `permission` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `menu_sites`
+--
+
+INSERT INTO `menu_sites` (`id_menu`, `id_site`, `sequence`, `title_in_menu`, `permission`) VALUES
+(1, 1, 1, '', 1),
+(1, 2, 2, '', 1),
+(1, 3, 3, '', 1),
+(1, 4, 4, '', 1),
+(1, 5, 5, '', 1),
+(1, 6, 6, '', 3),
+(1, 7, 7, '', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `sites`
 --
 
@@ -64,7 +109,10 @@ INSERT INTO `sites` (`id`, `name_file`, `name_link`, `title`) VALUES
 (2, 'videos', 'videos', 'Videos'),
 (3, 'ueber_mich', 'ueber_mich', 'Über mich'),
 (4, 'impressum', 'impressum', 'Impressum'),
-(5, 'login', 'login', 'Login');
+(5, 'login', 'login', 'Login'),
+(6, 'write_news', 'write_news', 'News schreiben'),
+(7, 'show_news', 'show_news', 'News'),
+(8, 'logout', 'logout', 'Logout');
 
 -- --------------------------------------------------------
 
@@ -100,6 +148,19 @@ ALTER TABLE `eintraege`
   ADD KEY `autor` (`autor`);
 
 --
+-- Indizes für die Tabelle `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `menu_sites`
+--
+ALTER TABLE `menu_sites`
+  ADD PRIMARY KEY (`id_menu`,`id_site`),
+  ADD KEY `id_site` (`id_site`);
+
+--
 -- Indizes für die Tabelle `sites`
 --
 ALTER TABLE `sites`
@@ -121,10 +182,15 @@ ALTER TABLE `users`
 ALTER TABLE `eintraege`
   MODIFY `eintrag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT für Tabelle `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT für Tabelle `sites`
 --
 ALTER TABLE `sites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
@@ -139,6 +205,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `eintraege`
   ADD CONSTRAINT `eintraege_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints der Tabelle `menu_sites`
+--
+ALTER TABLE `menu_sites`
+  ADD CONSTRAINT `menu_sites_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `menu_sites_ibfk_2` FOREIGN KEY (`id_site`) REFERENCES `sites` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

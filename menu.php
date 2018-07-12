@@ -1,15 +1,27 @@
 <?php if (!defined('IN_SITE')) { echo "Zugriff verweigert!"; die(); }
 
-$sites = $db->getAllSites();
+//$sites = $db->getAllSites();
+$sites = $db->getMenuWithSitesByID(1);
 ?>
 
 <ul>
     <?php
+
     foreach($sites as $site) {
-        echo '<li><a href="' . $site['name_link'] . '">' . $site['title'] . '</a></li>';
+        if(!empty($site['title_in_menu'])) {
+            $title = $site['title_in_menu'];
+        } else {
+            $title = $site['title'];
+        }
+        $list_entry = '<li><a href="' . $site['name_link'] . '">' . $title . '</a></li>';
+
+        if($site['permission'] >= 3) {
+            if($db->isUserLoggedIn()) {
+                echo $list_entry;
+            }
+        } else {
+            echo $list_entry;
+        }
     }
-    if($db->isUserLoggedIn()) { ?>
-        <li><a href="write_news">News schreiben</a></li>
-        <li><a href="show_news">News</a></li>
-    <?php } ?>
+?>
 </ul>
